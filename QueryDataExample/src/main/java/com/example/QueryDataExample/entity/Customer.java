@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
@@ -13,9 +14,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Customer {
-    @Id
+public class Customer implements Serializable {
 
+    @Id
     @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID customer_id;
