@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +20,13 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class OrderServiceImpl implements OrderService {
+
     private final OrderRepository orderRepository;
     private final ModelMapper modelMapper;
 //  private final CustomerRepository  customerRepository;
 
     public OrderServiceImpl(OrderRepository orderRepository, ModelMapper modelMapper){
-//        customerRepository = customerRepository;
+//      customerRepository = customerRepository;
         this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;
     }
