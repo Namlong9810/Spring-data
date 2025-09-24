@@ -5,6 +5,7 @@ import com.example.QueryDataExample.dto.request.GetCustomerByID;
 import com.example.QueryDataExample.dto.request.UpdateCustomerDTO;
 import com.example.QueryDataExample.dto.response.ListCustomerDTO;
 import com.example.QueryDataExample.entity.Customer;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.coyote.BadRequestException;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public interface CustomerService {
     void createNewCustomer(CreateNewCustomerDTO createNewCustomerDTO);
     Customer getCustomer(GetCustomerByID getCustomerByID) throws BadRequestException;
     Page<ListCustomerDTO> getListCustomer(Integer page, Integer size);
+    void exportData(HttpServletResponse response);
     void deleteCustomer(UUID customer_id);
     void updateCustomer(UUID customer_id, UpdateCustomerDTO updateCustomerDTO);
 }

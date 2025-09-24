@@ -9,7 +9,7 @@ import java.time.ZoneId;
 @Component
 @Slf4j
 public class ZoneList {
-    @Scheduled(initialDelay = 0)
+//    @Scheduled(initialDelay = 0)
     public void printZoneList() {
         ZoneId.getAvailableZoneIds()
                 .stream()

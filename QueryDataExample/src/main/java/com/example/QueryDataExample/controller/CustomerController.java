@@ -4,6 +4,7 @@ package com.example.QueryDataExample.controller;
 import com.example.QueryDataExample.dto.response.ListCustomerDTO;
 import com.example.QueryDataExample.service.CustomerService;
 import io.lettuce.core.dynamic.annotation.Param;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,12 @@ public class CustomerController {
                                                  @RequestParam(defaultValue = "5") Integer size){
         return customerService.getListCustomer(page, size);
     }
+
+    @GetMapping("export")
+    public void exportCustomerData(HttpServletResponse response) {
+        customerService.exportData(response);
+    }
+
     @DeleteMapping(":id")
     public void deleteCustomer(@RequestParam("id") UUID customer_id){
         customerService.deleteCustomer(customer_id);
