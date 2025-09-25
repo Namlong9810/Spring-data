@@ -111,6 +111,8 @@ public class CustomerServiceImpl implements CustomerService {
                     Writer writer = new OutputStreamWriter(zipOut, StandardCharsets.UTF_8);
                     CsvExportUtil.writeToCsv(exportList, ExportCustomerDTO.class, writer);
                     zipOut.closeEntry();
+
+                    this.awaitASec();
                 }
 
                 page++;
@@ -118,6 +120,14 @@ public class CustomerServiceImpl implements CustomerService {
 
         } catch (Exception e) {
             throw new IllegalArgumentException("CSV export failed: " + e.getMessage());
+        }
+    }
+
+    private void awaitASec() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
         }
     }
 
